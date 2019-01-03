@@ -1,7 +1,7 @@
 import math
 import sys
 
-
+# https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
 class DijkstrasShortestDistance:
     def __init__(self, vertices, graph):
         self.V = vertices
@@ -49,6 +49,6 @@ class DijkstrasShortestDistance:
             self.update_distance_values(u, distances)
 
         # print solution
-        self.print_solution(source, distances)
+        # self.print_solution(source, distances)
         return distances
 
