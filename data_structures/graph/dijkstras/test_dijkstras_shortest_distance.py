@@ -18,10 +18,19 @@ class DijkstraShortestDistanceTestCase(unittest.TestCase):
 
         g = DijkstrasShortestDistance(V, graph)
 
-        shortestDistances = g.dijkstra_shortest_distance(0)
-
+        result = g.dijkstra_shortest_distance(0)
+        
         expectedDistances = [0, 4, 12, 19, 21, 11, 9, 8, 14]
-        self.assertEqual(shortestDistances, expectedDistances)
+        expectedParents = [0, 0, 1, 2, 5, 6, 7, 0, 2]
+        self.assertEqual(result, {'distances': expectedDistances, 'parents': expectedParents})
+
+        # distance from 0 to 1
+        result = g.dijkstra_shortest_distance(0, 1)
+        self.assertEqual(result['distances'][1], 4)
+        
+        # distance from 0 to 2
+        result = g.dijkstra_shortest_distance(0, 2)
+        self.assertEqual(result['distances'][2], 12)
 
         
 

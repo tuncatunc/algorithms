@@ -61,6 +61,17 @@ class GraphTestCase(unittest.TestCase):
         graph = Graph(g)
         graph.DFS("a")
 
+    def testIsCycling(self):
+        g = {"a": ["d", "f"],
+             "b": ["c"],
+             "c": ["b", "c", "d", "e"],
+             "d": ["a", "c"],
+             "e": ["c"],
+             "f": ["d"]
+             }
+        graph = Graph(g)
+        graph.Is_Cyclic()
+
 
 if __name__ == '__main__':
     unittest.main()

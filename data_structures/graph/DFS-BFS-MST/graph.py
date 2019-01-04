@@ -87,3 +87,26 @@ class Graph(object):
     def DFS(self, v):
         visited = []
         self.__DFS_Util(v, visited)
+
+    def __Is_Cyclic_Util(self, visited, v):
+        visited.append(v)
+        print('Visiting', v)
+
+        for u in self.__graph_dict[v]:
+            if u in visited and v not in self.__graph_dict[u]:
+                return True
+            else:
+                return self.__Is_Cyclic_Util(visited, u)
+
+        return False
+    # Detect cycle in undirected graph
+    # Using DFS
+    # For every visited vertex ‘v’, 
+    # if there is an adjacent ‘u’ such that u is already visited and u is not parent of v, 
+    # then there is a cycle in graph.
+    def Is_Cyclic(self):
+        visited = []
+        keys = list(self.__graph_dict.keys())
+        v = keys[0]
+        return self.__Is_Cyclic_Util(visited, v)
+
