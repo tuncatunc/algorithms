@@ -33,11 +33,8 @@ class Graph(object):
             self.__graph_dict[vertext1] = [vertext2]
 
     def bfs(self, start):
-        visited = []
-        queue = []
-
-        queue.append(start)
-        visited.append(start)
+        visited = [start]
+        queue = [start]
 
         while queue:
             vertex = queue.pop(0)
@@ -45,6 +42,7 @@ class Graph(object):
             for neighbor in self.__graph_dict[vertex]:
                 if neighbor not in visited:
                     queue.append(neighbor)
+                    visited.append(neighbor)
         return queue
 
     # Minimum spanning tree in a unweighted graphs
