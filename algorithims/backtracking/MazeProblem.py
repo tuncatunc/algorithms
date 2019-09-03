@@ -47,7 +47,12 @@ class MazeProblem:
     def printSolution(self):
       for row in range(len(self.solution)):
         for col in range(len(self.solution[0])):
-          print("S" if self.solution[row][col] is 1 else "-", end=' ')
+          if self.solution[row][col] is 1:
+            print("🟢", end = " ")
+          elif self.maze[row][col] == 1:
+            print("⭕", end = " ")
+          else:
+            print("⚪", end=" ")
         print()
 
 if __name__ == "__main__":
