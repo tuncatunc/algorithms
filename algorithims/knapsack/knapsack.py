@@ -10,7 +10,7 @@ class Knapsack:
   def RecursiveSolution(self, n, C):
     # Base case
     # No items is left or no capacity is left
-    if n == 0 or C <= 0:
+    if n < 0 or C <= 0:
       return 0
 
     # Don't include item if it exceeds capacity
@@ -21,7 +21,7 @@ class Knapsack:
     tmp2 = self.values[n] + self.RecursiveSolution(n-1, C - self.weights[n]) # Nth item is included
 
     if (tmp2 > tmp1):
-      self.solution.add(self.values[n])
+      self.solution.add(n)
 
     return max(tmp1, tmp2)
 
@@ -34,7 +34,7 @@ class Knapsack:
     result = 0
 
     # Base checks
-    if n == 0 or C <= 0:
+    if n < 0 or C <= 0:
       result = 0
 
     # If item's weight exceeds capacity don't include it at all
@@ -47,7 +47,7 @@ class Knapsack:
       result = max(included, notIncluded)
       
       if (included > notIncluded):
-        self.solution.add(self.values[n])
+        self.solution.add(n)
 
     
     self.memorizationTable[n][C] = result
